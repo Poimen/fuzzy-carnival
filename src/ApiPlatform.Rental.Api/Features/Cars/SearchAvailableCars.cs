@@ -1,11 +1,16 @@
 ﻿using ApiPlatform.Kernel.Core.Endpoints;
-using Microsoft.AspNetCore.Mvc;
+using ApiPlatform.Kernel.Core.Results;
+using ApiPlatform.Rental.Api.Constants;
 
 namespace ApiPlatform.Rental.Api.Features.Cars;
 
-public class SearchAvailableCars : IGetEndpoint
+public record AvailableCarsResponse;
+
+public class SearchAvailableCars : IGetEndpoint<AvailableCarsResponse>
 {
-    public ActionResult HandleGet()
+    public string Endpoint => $"${ApiConstant.ApiBaseUrl}/cars";
+
+    public ValueTask<IApplicationResult<AvailableCarsResponse>> HandleAsync()
     {
         throw new NotImplementedException();
     }

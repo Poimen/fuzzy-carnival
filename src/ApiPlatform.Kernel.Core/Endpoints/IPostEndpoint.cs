@@ -1,19 +1,19 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ApiPlatform.Kernel.Core.Results;
 
 namespace ApiPlatform.Kernel.Core.Endpoints;
 
-public interface IPostEndpoint : IEndpoint
+public interface IPostEndpoint : IHttpEndpoint
 {
-    ActionResult HandlePost();
+    ValueTask<IApplicationResult> HandleAsync();
 }
 
-public interface IPostEndpoint<TRequest, TResponse> : IEndpoint<TRequest, TResponse>
+public interface IPostEndpoint<TRequest, TResponse> : IHttpEndpoint<TRequest, TResponse>
 {
-    ActionResult<TResponse> HandlePost(TRequest request);
+    ValueTask<IApplicationResult<TResponse>> HandleAsync(TRequest request);
 }
 
-public interface IPostEndpoint<TResponse> : IEndpoint<TResponse>
+public interface IPostEndpoint<TResponse> : IHttpEndpoint<TResponse>
 {
-    ActionResult<TResponse> HandlePost();
+    ValueTask<IApplicationResult<TResponse>> HandleAsync();
 }
 
